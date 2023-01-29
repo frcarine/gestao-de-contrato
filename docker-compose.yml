@@ -1,0 +1,25 @@
+version: "3"
+services:
+  webserver:
+    image: php:apache
+    ports:
+      - "80:80"
+    volumes:
+      - ./app:/var/www/html
+  db:
+    image: mysql:latest
+    environment:
+      - MYSQL_DATABASE=norte_tech
+      - MYSQL_USER=norte_tech
+      - MYSQL_PASSWORD=password
+      - MYSQL_ALLOW_EMPTY_PASSWORD=1
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 8001:80
+    environment:
+      - PMA_HOST=db
+      - PMA_PORT=3306
+  
+      
+      
